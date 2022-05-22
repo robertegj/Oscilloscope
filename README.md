@@ -1,6 +1,6 @@
 ## X Y Oscilloscope
 
-Demo : https://sean-bradley.github.io/Oscilloscope/
+Demo : https://robertegj.github.io/Oscilloscope/
 
 ![X Y](1.jpg)
 ![Waveform](3.jpg)
