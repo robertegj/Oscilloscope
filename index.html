@@ -33,7 +33,7 @@
         .startButton {
             width: 100%;
             height: 50px;
-            background-color: orangered;
+            background-color: greenyellow;
             border: 1px solid;
             color: black;
             font-size: 32px;
@@ -109,81 +109,47 @@
 
 <body>
     <canvas id='scope' width='1024' height='1024'></canvas>
-    <a href="https://github.com/Sean-Bradley/Oscilloscope">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-            alt="Fork me on GitHub">
-    </a>
-    <span id="header">
-        Tutorial at
-        <a href="https://www.youtube.com/watch?v=JrOP-RJ5p1I" target="_blank">Pictures from Sound using an Oscilloscope and Fruityloops FL Studio</a>
+
+    <span id="ctrls">
+        
+        <span id="modeOptions">Mode:&nbsp;&nbsp;
+            <label class="bordered">
+                <input type="radio" name="rdoDisplayMode" id="0" onclick="setXYMode(0);" checked/>X Y</label>
+            <label class="bordered">
+                <input type="radio" name="rdoDisplayMode" id="1" onclick="setXYMode(1);" />Waveform</label>
+            <label class="bordered">
+                <input type="radio" name="rdoDisplayMode" id="1" onclick="setXYMode(2);" />Spectrum</label>
+
+                <button onclick="document.getElementById('ctrls').style.display='none'">Hide Tools</button>
+
+        </span>
+        <span id="LeftRightChannels">
+            <label class="bordered">
+                <input type="checkbox" onchange="toggleLeft();" checked />Left Channel
+            </label>
+            <label class="bordered">
+                <input type="checkbox" onchange="toggleRight();" checked />Right Channel
+            </label>
+        </span>
+        <span id="XYFlipOptions">
+            <label class="bordered">
+                <input type="checkbox" onchange="changeflipX();" checked />Flip X
+            </label>
+            <label class="bordered">
+                <input type="checkbox" onchange="changeflipY();" checked />Flip Y
+            </label>
+        </span>
+
     </span>
-    <span id="modeOptions">Mode:&nbsp;&nbsp;
-        <label class="bordered">
-            <input type="radio" name="rdoDisplayMode" id="0" onclick="setXYMode(0);" checked/>X Y</label>
-        <label class="bordered">
-            <input type="radio" name="rdoDisplayMode" id="1" onclick="setXYMode(1);" />Waveform</label>
-        <label class="bordered">
-            <input type="radio" name="rdoDisplayMode" id="1" onclick="setXYMode(2);" />Spectrum</label>
-    </span>
-    <span id="LeftRightChannels">
-        <label class="bordered">
-            <input type="checkbox" onchange="toggleLeft();" checked />Left Channel
-        </label>
-        <label class="bordered">
-            <input type="checkbox" onchange="toggleRight();" checked />Right Channel
-        </label>
-    </span>
-    <span id="XYFlipOptions">
-        <label class="bordered">
-            <input type="checkbox" onchange="changeflipX();" checked />Flip X
-        </label>
-        <label class="bordered">
-            <input type="checkbox" onchange="changeflipY();" checked />Flip Y
-        </label>
-    </span>
+
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>X Y Oscilloscope by seanwasere ytbe</h2>
-            </div>
             <div class="modal-body">
-                <p>The X Y Oscilloscope uses Stereo Input.</p>
-                <p>Left Input channel affects X axis and right input channel affects Y axis.</p>
-                <p>Playing sine wave in left channel and cosine wave in right channel draws a circle.</p>
-
                 <button class="startButton" onclick="connectAudioAPI(); ">START</button>
-
-                <p>Works Best with Windows 10 and Edge browser (it's true).
-                    <ul>
-                        <li>Open 'Privacy' Settings from the Cortana input.</li>
-                        <li>Allow Microsoft Edge to access Microphone</li>
-                        <li>Open 'Sound' settings from the Cortana input box.</li>
-                        <li>Manage 'Recording Devices' to select desired audio input, stero input preferred.</li>
-                        <li>Refresh Oscilloscope Page in Edge Browser, Press 'START' button and allow website to access your
-                            microphone.
-                        </li>
-                        <li>Make some noise</li>
-                    </ul>
-                </p>
-
-                <p>
-                    Tutorial of the Oscillioscope setup and drawing shapes with sound
-                    <br/>
-                    <a href="https://www.youtube.com/watch?v=JrOP-RJ5p1I" target="_blank">
-                        <img src="https://img.youtube.com/vi/JrOP-RJ5p1I/0.jpg">
-                    </a>
-                </p>
-
-                <p>Source code at
-                    <a href="https://github.com/Sean-Bradley/Oscilloscope">https://github.com/Sean-Bradley/Oscilloscope</a>
-                </p>
-
-                <p>Written by
-                    <a href="https://youtube.com/seanwasere " target="_blank">SeanWasEre Youtube</a>
-                </p>
             </div>
         </div>
     </div>
+
     <br/>
 
     <script lang="javascript ">
@@ -345,7 +311,7 @@
 
                     ctx.fillStyle = "rgb(0, 0, 0) ";
                     ctx.fillRect(0, 0, 1024, 1024);
-                    ctx.strokeStyle = 'rgb(255, 128, 0)';
+                    ctx.strokeStyle = 'rgb(100, 255, 100)';
                     ctx.lineWidth = 3;
                     if (leftChannel && rightChannel) {
                         ctx.beginPath();
@@ -377,7 +343,7 @@
 
                     ctx.fillStyle = "rgb(0, 0, 0) ";
                     ctx.fillRect(0, 0, 1024, 1024);
-                    ctx.strokeStyle = 'rgb(128, 0, 256)';
+                    ctx.strokeStyle = 'rgb(128, 255, 256)';
                     ctx.lineWidth = 6;
                     if (leftChannel && rightChannel) {
                         ctx.beginPath();
